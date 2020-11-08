@@ -4,6 +4,12 @@
 import subprocess
 import datetime
 
+print("¿Desea APAGAR(1) el Sistema o reiniciarlo(2)?")
+dato = input("Su opción: (1/2): ")
+powerOffSystem = True
+if int(dato) != 1:
+    powerOffSystem = False
+
 hh = input("Ingresar hora (valido entre 0 y 23): ");
 mm = input("Ingresar minuto (valido entre 0 y 59): ");
 
@@ -12,7 +18,10 @@ def Shutdown():
         if (datetime.datetime.now().hour == int(hh)) and (datetime.datetime.now().minute == int(mm)):
             break
         pass
-    subprocess.call("poweroff", shell=True)
+    if powerOffSystem:
+        subprocess.call("poweroff", shell=True)
+    else:
+        subprocess.call("reboot", shell=True)
 
 # validaciones:    > <
 try:
