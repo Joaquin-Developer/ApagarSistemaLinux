@@ -1,3 +1,5 @@
+echo "El sistema se apagará a las $1 horas . . ."
+
 while : ; do
 
 	if [ $(date +%H:%M) = "$1" ]; then
